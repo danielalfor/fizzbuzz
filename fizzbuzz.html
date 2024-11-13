@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- CSS Code - Estilo del documento -->
+    <style>
+      html {
+        font-size: 2.5rem;
+        background-color: rgb(11, 11, 11);
+      }
+
+      body {
+        color: rgb(25, 226, 55);
+        padding: 20px 25px;
+        margin: 0;
+
+        justify-content: center;
+        align-items: center;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+
+      input,
+      button {
+        font-size: 0.5rem;
+      }
+
+      ul {
+        list-style: none;
+        text-align: center;
+      }
+      li {
+        color: rgb(219, 50, 168);
+      }
+    </style>
+
+    <!-- JS Code - procesamiento de los datos -->
+    <script>
+      window.onload = function () {
+        // Crear una referencia al boton de accion
+        let buttonElement = document.querySelector("#fbButton");
+        buttonElement.addEventListener("click", fizzbuzz);
+      };
+
+      // Funcion de procesamiento del click
+      function fizzbuzz() {
+        // 1. Leer el numero de la entrada
+        let inputElement = document.querySelector("#fbInput");
+        let inputElementContent = inputElement.value;
+        let num = Number(inputElementContent);
+
+        // Crear un elemento para guardar la salida <ul><li>Cat</li></ul>
+        let output = "<ul>";
+
+        // Iterar sobre los valores del numero de 1 hasta su valor total
+        for (let i = 1; i <= num; i++) {
+          //Escribir un elemento en la lista
+          output += "<li>" + fbVal(i) + "</li>";
+        }
+
+        output += "</ul>"; //datos almacenados
+
+        //Poner esto en la interfaz del usuario o pagina web
+        document.querySelector("#outputArea").innerHTML = output;
+      }
+
+      // Recibir un numero y devolver numero, gato, tigre o mono
+      function fbVal(n) {
+        let res = "";
+
+        if (n % 3 === 0 && n % 5 === 0) {
+          res = "&#128053";
+        } else if (n % 3 === 0) {
+          res = "&#128049";
+        } else if (n % 5 === 0) {
+          res = "&#128047";
+        } else {
+          res = n;
+        }
+
+        return res;
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Interfaz para el usuario - aplicacion web -->
+    <div>
+      <strong style="color: gray">Fizzbuzz Calc</strong>
+      Ingresa el numero:
+      <input type="number" id="fbInput" />
+      <button id="fbButton">Calcular FizzBuzz</button>
+    </div>
+
+    <!-- Aqui escribiremos los datos de salida -->
+    <div id="outputArea"></div>
+  </body>
+</html>
